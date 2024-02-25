@@ -3,8 +3,25 @@ import {
 	SlimeRancherRecipe,
 } from "core/types";
 
-export const SlimeRancherRecipeRegistry: SlimeRancherRecipe[] =
-	[];
+export const SlimeRancherRecipeRegistry: Record<
+	string,
+	SlimeRancherRecipe
+> = {};
+
+export const recipeFromLabel = (
+	label: string,
+): SlimeRancherRecipe => {
+	if (label in SlimeRancherRecipeRegistry) {
+		return SlimeRancherRecipeRegistry[label];
+	}
+
+	return {
+		label: "Uh oh",
+		quantity: 0,
+		ingredientRecord: {},
+		iconURL: "./assets/icons/UhOh.webp",
+	};
+};
 
 const registerRecipe = (
 	label: string,
@@ -15,12 +32,12 @@ const registerRecipe = (
 		" ",
 		"",
 	)}.webp`;
-	SlimeRancherRecipeRegistry.push({
+	SlimeRancherRecipeRegistry[label] = {
 		label,
 		quantity,
 		iconURL,
 		ingredientRecord,
-	});
+	};
 };
 
 // One-way teleporter

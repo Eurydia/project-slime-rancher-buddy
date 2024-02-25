@@ -9,7 +9,8 @@
 		"paths": {
 			"assets/*": ["./assets/*"],
 			"core/*": ["./core/*"],
-			"app/*": ["./app/*"]
+			"app/*": ["./app/*"],
+			"views/*": ["./views/*"]
 		},
 
 		/* Bundler mode */

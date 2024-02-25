@@ -24,7 +24,7 @@ export default defineConfig({
 			output: {
 				minifyInternalExports: true,
 				manualChunks: (id) => {
-					if (id.includes("node_module")) {
+					if (id.match("node_module") !== null) {
 						return id
 							.toString()
 							.split("node_modules/")[1]

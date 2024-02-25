@@ -1,32 +1,21 @@
 import {
-	Container,
-	List,
-	ListItem,
-	ListItemIcon,
-	ListItemText,
+	CssBaseline,
+	ThemeProvider,
+	createTheme,
 } from "@mui/material";
-import { SlimeRancherRecipeRegistry } from "assets/SlimeRancherRecipe";
+import { Calculator } from "views/Calculator/Calculator";
+
+const theme = createTheme({
+	palette: {
+		mode: "dark",
+	},
+});
 
 export const App = () => {
 	return (
-		<Container>
-			<List>
-				{SlimeRancherRecipeRegistry.map(
-					({ label, iconURL }) => (
-						<ListItem key={label}>
-							<ListItemIcon>
-								<img
-									width="auto"
-									height="128px"
-									src={iconURL}
-									alt={label}
-								/>
-							</ListItemIcon>
-							<ListItemText>{label}</ListItemText>
-						</ListItem>
-					),
-				)}
-			</List>
-		</Container>
+		<ThemeProvider theme={theme}>
+			<CssBaseline />
+			<Calculator />
+		</ThemeProvider>
 	);
 };
